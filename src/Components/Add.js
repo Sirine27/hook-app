@@ -1,62 +1,88 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
 
-class AddModal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            show: false,
-        };
-    }
+const AddModal = ({movies, setMovies}) => {
+   
+    const [addTitle, setAddTitle] = useState("");
+    const [addDate, setAddDate] = useState("");
+    const [addImage, setAddImage] = useState("");
+    const [addDescription, setAddDescription] = useState("");
+    const [addType, setAddType] = useState("");
+    const [addRating, setAddRating] = useState(0);
+    const [show, setShow] = useState(false);
 
-handleShow = () => {
-    this.setState({ show: !this.state.show});
-};
-handleChange = (event) => {
-    this.setState({
-        [event.target.name]: event.target.value,
-    });
-};
-render() {
+const handleShow = () => {
+    setShow(!show);
+}
+const handleAlert =() =>{
+    alert ("congratulations, you've added a new movie ... check below 🙂");
+}
+
     return(
         <div>
-            <Button style={{float:'left'}} variant="primary" onClick={this.handleShow}>Add Movie</Button>
-            <Modal show={this.state.show} onHide={this.handleShow}>
+            <Button style={{float:'left'}} variant="light" onClick={handleShow}>Add Movie</Button>
+            <Modal show={show} onHide={handleShow}>
                 <Modal.Header >
-                    <Modal.Title>Add new Movie</Modal.Title>
+                    <Modal.Title> Add new Movie</Modal.Title>
                 </Modal.Header>
                 
   <Modal.Body>
       <div>
-          <label className="input">Title</label>
-          <input type="text" name="name" onChange = {this.handleChange}/>
+          <label className="input">Title: </label>
+          <input type="text" name="name" onChange = {(event) =>
+    setAddTitle(event.target.value)} />
       </div>
       <div>
-          <label className="input">date</label>
-          <input type="text" name="date" onChange = {this.handleChange}/>
+          <label className="input">Date: </label>
+          <input type="text" name="date" onChange = {(event) =>
+    setAddDate(event.target.value)} />
       </div>
       <div>
-          <label className="input">image</label>
-          <input type="text" name="image" onChange = {this.handleChange}/>
+          <label className="input">Image: </label>
+          <input type="text" name="image" onChange = {(event) =>
+    setAddImage(event.target.value)} />
       </div>
       <div>
-          <label className="input">discription</label>
-          <input type="text" name="discription" onChange = {this.handleChange}/>
+          <label className="input">Discription: </label>
+          <input type="text" name="discription" onChange = {(event) =>
+    setAddDescription(event.target.value)} />
       </div>
       <div>
-          <label className="input">type</label>
-          <input type="text" name="type" onChange = {this.handleChange}/>
+          <label className="input">Type: </label>
+          <input type="text" name="type" onChange ={(event) =>
+    setAddType(event.target.value)} />
       </div>
       <div>
-          <label className="input">rating</label>
-          <input type="text" name="rating" onChange = {this.handleChange}/>
+          <label className="input">Rating: </label>
+          <input type="text" name="rating" onChange = {(event) =>
+    setAddRating(event.target.value)} />
       </div>
   </Modal.Body>
   
   <Modal.Footer>
-    <Button variant="secondary" onClick={this.handleShow}>Close</Button>
-    <Button variant="primary">Add Movie</Button>
+
+
+    <Button variant="outline-primary" onClick={(e) =>{
+                    e.preventDefault()
+                    setMovies([...movies,
+                    {
+                        id: Math.random(),
+                        name: addTitle,
+                        date: addDate,
+                        image: addImage,
+                        description: addDescription, 
+                        type: addType,
+                        rating: addRating 
+                    }
+                    ]);
+                    handleAlert ()
+                    handleShow ()
+
+                } 
+                    }
+                   
+                    >Add Movie</Button>
   </Modal.Footer>
             </Modal>
 
@@ -64,7 +90,7 @@ render() {
         </div>
     )
 }
-}
+
  
 
 export default AddModal;

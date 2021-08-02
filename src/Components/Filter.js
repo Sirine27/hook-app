@@ -1,19 +1,16 @@
 
 import React from 'react';
 import { Rating } from '@material-ui/lab';
-import { Navbar, Form, FormControl } from 'react-bootstrap';
+import {  Form, FormControl } from 'react-bootstrap';
 
 
 
 const Filter = ({setFilterTitel, FilterRating, setFilterRating}) => {
     return (
         <div>
- <Navbar>
- <Navbar.Brand href="#action">Movie App</Navbar.Brand>
-  <Navbar.Toggle aria-controls="navbarScroll"/>
-  <Navbar.Collapse id="navbarScroll">
+ <h1 style={{marginBottom:'20px'}}>Movie App</h1>
 
-    <Form className="d-flex">
+    <Form style={{marginBottom:'20px'}} className="d-flex">
       <FormControl
         type="search"
         placeholder="Search"
@@ -30,8 +27,7 @@ const Filter = ({setFilterTitel, FilterRating, setFilterRating}) => {
       }/>
 
     </Form>
-  </Navbar.Collapse>
-</Navbar>
+ 
         </div>
     )
 }

@@ -9,8 +9,8 @@ import {Rating} from '@material-ui/lab';
 export const MovieCard = ({movie}) => {
 
            return (
-            <div>
- <Card style={{marginLeft:'41px', marginBottom:'20px', backgroundColor:'#282c34', height:'470px', width: '290px' }}>
+            <div style={{marginTop:'20px'}}>
+ <Card style={{marginLeft:'20px', marginBottom:'20px', backgroundColor:'#282c34', height:'400px', width: '250px' }}>
   <Card.Img variant="top" style={{ width:'auto', height:'40%'}} src={movie.image} />
   <Card.Body>
     <Card.Title>{movie.name}</Card.Title>

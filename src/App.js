@@ -16,7 +16,7 @@ function App() {
       <header className="App-header">
       
       <Filter  setFilterRating={setFilterRating}  FilterRataing={FilterRating} setFilterTitel={setFilterTitel} />
-      <AddModal />
+      <AddModal setMovies={setMovies} movies={movies} />
       <MovieList FilterRating={FilterRating} FilterTitel={FilterTitel} movies={movies} />
       
      
